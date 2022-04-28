@@ -35,7 +35,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/themes/dark-layout.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/themes/bordered-layout.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/themes/semi-dark-layout.css')}}">
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/core/menu/menu-types/vertical-menu.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/plugins/charts/chart-apex.css')}}">
@@ -102,6 +103,52 @@
     <script src="{{asset('/assets/js/scripts/pages/app-invoice-list.js')}}"></script>
     <!-- END: Page JS-->
 
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(function() {
+            $(document).on('click', '.delete', function(e) {
+                e.preventDefault();
+                var link = $(this).attr("href");
+                const swalWithBootstrapButtons = Swal.mixin({
+                    customClass: {
+                        confirmButton: 'btn btn-success ml-1',
+                        cancelButton: 'btn btn-danger mr-1'
+                    },
+                    buttonsStyling: false
+                })
+                swalWithBootstrapButtons.fire({
+                    title: 'Əminsən ?',
+                    text: "Sildikən sonra geri qaytarılamaz",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Bəli, Sil !',
+                    cancelButtonText: 'Xeyr, Silmə !',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = link;
+                        swalWithBootstrapButtons.fire(
+                            'Silindi!',
+                            'Uğurla Silindi',
+                            'success'
+                        )
+                    } else if (
+                        /* Read more about handling dismissals below */
+                        result.dismiss === Swal.DismissReason.cancel
+                    ) {
+                        swalWithBootstrapButtons.fire(
+                            'Ləğv Edildi!',
+                            'Məlumatlar Güvəndədir! ;',
+                            'error'
+                        )
+                    }
+                })
+            })
+        })
+    </script>
     <script>
         $(window).on('load', function() {
             if (feather) {
