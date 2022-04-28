@@ -1,0 +1,42 @@
+
+{
+    "name": "hublinkaz/laravel-ui-markup",
+    "description": "Laravel frontend preset for MarkUp Theme",
+    "keywords": [
+        "laravel",
+        "preset",
+        "markup"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ağa Mustafayev",
+            "email": "info@hublink.az"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "illuminate/support": "^9.0",
+        "hublinkaz/laravel-generator-helpers": "^4.0",
+        "laravel/ui": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hublinkaz\\MarkUpPreset\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hublinkaz\\MarkUpPreset\\MarkUpPresetServiceProvider"
+            ]
+        }
+    },
+    "funding": [
+        {
+            "type": "",
+            "url": ""
+        }
+    ]
+}
